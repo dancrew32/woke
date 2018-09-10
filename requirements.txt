@@ -2,3 +2,4 @@ feedparser
 yagmail
 keyring
 keyrings.alt
+pytz

@@ -1,6 +1,7 @@
 import os
 import datetime
 
+import pytz
 import feedparser
 import yagmail
 
@@ -46,5 +47,6 @@ for url, source in LISTEN.items():
     html.append('<a href="{url}" style="display:block;">{source}</a>'.format(url=url, source=source))
 
 # EMAIL
-subject = datetime.datetime.now().strftime('%A, %B %-d, %Y')
+tz = pytz.timezone('US/Pacific')
+subject = tz.localize(datetime.datetime.now()).strftime('%A, %B %-d, %Y')
 yagmail.SMTP(EMAIL).send(EMAIL, subject, html)
