@@ -46,5 +46,5 @@ for url, source in LISTEN.items():
     html.append('<a href="{url}" style="display:block;">{source}</a>'.format(url=url, source=source))
 
 # EMAIL
-subject = f'{datetime.datetime.now():%A, %B %-d, %Y}'
+subject = datetime.datetime.now().strftime('%A, %B %-d, %Y')
 yagmail.SMTP(EMAIL).send(EMAIL, subject, html)
