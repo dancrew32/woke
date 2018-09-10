@@ -43,7 +43,7 @@ for url, limit in RSS.items():
 # LISTEN
 html.append('<h3>Listen</h3>')
 for url, source in LISTEN.items():
-    html.append(f'<a href="{url}" style="display:block;">{source}</a>')
+    html.append('<a href="{url}" style="display:block;">{source}</a>'.format(url=url, source=source))
 
 # EMAIL
 subject = f'{datetime.datetime.now():%A, %B %-d, %Y}'
