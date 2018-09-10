@@ -10,5 +10,5 @@ make venv deps run
 
 # INSTALL CRONTAB
 crontab -e
-6 30 * * * /home/ubuntu/woke/app.py
+6 30 * * * /home/ubuntu/woke/venv/bin/python3 /home/ubuntu/woke/app.py
 ```
