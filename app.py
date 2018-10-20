@@ -31,12 +31,15 @@ LISTEN = {
 
 html = []
 
+STYLE = 'display:block;color:#555;text-decoration:none;margin-bottom:3px;'
+
 # NEWS
 for url, limit in RSS.items():
     rss = feedparser.parse(url)
     html.append('<h3>%s<h3>' % rss['feed']['title'])
     for entry in rss['entries']:
-        html.append('<a href="{link}" style="display:block;">{title}</a>'.format(**entry))
+        html.append('<a href="{link}" style="{style}">{title}</a>'.format(
+            link=entry['link'], title=entry['title'], style=STYLE))
         limit -= 1
         if not limit:
             break
@@ -44,7 +47,8 @@ for url, limit in RSS.items():
 # LISTEN
 html.append('<h3>Listen</h3>')
 for url, source in LISTEN.items():
-    html.append('<a href="{url}" style="display:block;">{source}</a>'.format(url=url, source=source))
+    html.append('<a href="{url}" style="{style}">{source}</a>'.format(
+        url=url, source=source, style=STYLE))
 
 # EMAIL
 tz = pytz.timezone('US/Pacific')
